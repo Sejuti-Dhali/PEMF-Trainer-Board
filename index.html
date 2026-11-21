@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="An educational PEMF trainer board: NE555 pulse generation, discrete driver stages, experimental observations and an interactive idealized coil-field model.">
+  <meta name="theme-color" content="#f4eee5">
+  <title>PEMF Trainer Board — Pulse & Field</title>
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="nav-wrap">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="PEMF Trainer Board home"><span class="brand-sigil">◉</span><span>PULSE<span class="amp">&</span>FIELD <small>PEMF / 01</small></span></a>
+      <div class="nav-links">
+        <a href="#approach">Approach</a>
+        <a href="#system">System</a>
+        <a href="#evidence">Evidence</a>
+        <a href="#lab">Explore the model</a>
+      </div>
+      <a class="nav-git" href="https://github.com/Sejuti-Dhali/PEMF-Trainer-Board" target="_blank" rel="noopener noreferrer">Source ↗</a>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-light" aria-hidden="true"></div>
+      <div class="hero-content">
+        <div class="overline"><span class="dot"></span> BIOMEDICAL INSTRUMENTATION / EDUCATIONAL PROTOTYPE</div>
+        <h1 id="hero-title">A pulse<br>you can <em>see.</em><br>A field you<br>can <em>study.</em></h1>
+        <p class="hero-deck">An electronics-focused examination of pulsed electromagnetic fields: from a 555 timer and transistor driver to a hand-wound copper coil.</p>
+        <div class="hero-actions"><a class="btn primary" href="#lab">Open interactive lab <span>↗</span></a><a class="btn outline" href="#evidence">Examine observations</a></div>
+        <div class="hero-stamp">Report-informed project showcase · No clinical efficacy claim</div>
+      </div>
+      <div class="hero-art" aria-label="Illustrated coil with an abstract pulsed magnetic field">
+        <svg class="coil-art" viewBox="0 0 620 590" role="img" aria-label="Original vector drawing of a circular copper coil surrounded by concentric magnetic-field lines">
+          <defs>
+            <radialGradient id="halo" cx="50%" cy="48%" r="55%"><stop offset="0" stop-color="#e7c8a6" stop-opacity=".17"/><stop offset="1" stop-color="#9db9c6" stop-opacity=".5"/></radialGradient>
+            <linearGradient id="copper" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#f0bf83"/><stop offset=".48" stop-color="#ac5c37"/><stop offset="1" stop-color="#f5c68f"/></linearGradient>
+          </defs>
+          <circle cx="310" cy="285" r="245" fill="url(#halo)"/>
+          <g fill="none" stroke="#e9e2d6" stroke-width="2" opacity=".65"><ellipse cx="310" cy="286" rx="276" ry="182" transform="rotate(-30 310 286)"/><ellipse cx="310" cy="286" rx="180" ry="271" transform="rotate(-30 310 286)"/><circle cx="310" cy="286" r="230" stroke-dasharray="3 11"/></g>
+          <g fill="none" stroke="url(#copper)" stroke-width="11" stroke-linecap="round">
+            <ellipse cx="305" cy="288" rx="161" ry="167" transform="rotate(-16 305 288)"/>
+            <ellipse cx="308" cy="287" rx="153" ry="170" transform="rotate(-17 308 287)"/>
+            <ellipse cx="308" cy="287" rx="145" ry="173" transform="rotate(-18 308 287)"/>
+            <ellipse cx="308" cy="287" rx="137" ry="177" transform="rotate(-19 308 287)"/>
+            <ellipse cx="308" cy="287" rx="129" ry="181" transform="rotate(-20 308 287)"/>
+          </g>
+          <path d="M220 438 C190 482,156 481,142 522" stroke="#bd7b57" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <path d="M400 440 C419 471,467 472,480 524" stroke="#bd7b57" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <g fill="#d4ebf0"><circle cx="148" cy="171" r="5"/><circle cx="505" cy="232" r="4"/><circle cx="460" cy="437" r="3"/></g>
+          <path class="pulse-orbit" d="M80 307 L149 307 L162 287 L176 326 L196 261 L217 356 L236 306 L334 306 L349 284 L366 329 L380 281 L398 306 L540 306" stroke="#e8f0ec" stroke-width="3" fill="none" opacity=".8" stroke-linejoin="round"/>
+        </svg>
+        <div class="art-caption"><span class="caption-led"></span> COPPER COIL / SYSTEM CONCEPT <strong>60 TURNS</strong></div>
+        <span class="art-tag tag-a">Time-varying flux</span><span class="art-tag tag-b">10 cm diameter</span>
+      </div>
+      <div class="hero-index" aria-hidden="true">01 — 05 / PROJECT STUDY</div>
+    </section>
+
+    <div class="ribbon" aria-label="Reported project parameters">
+      <div><small>REPORTED FREQUENCY</small><strong>65.74 <span>Hz</span></strong></div>
+      <div><small>COIL WINDINGS</small><strong>60 <span>turns</span></strong></div>
+      <div><small>COIL DIAMETER</small><strong>10 <span>cm</span></strong></div>
+      <div><small>NOMINAL INPUT</small><strong>5 <span>V</span></strong></div>
+    </div>
+
+    <section class="section intro" id="approach">
+      <div class="section-label">01 / RESEARCH CONTEXT</div>
+      <div><h2>From an abstract phenomenon to a <em>tangible circuit.</em></h2><p>The supplied May 2025 project report documents a 555-timer-based PEMF prototype built with a transistor driver and copper coil. Its emphasis is pulse formation, physical assembly and oscilloscope observations. This website interprets that technical work as a reproducible educational case study rather than a validated therapy device.</p><div class="caution-inline"><span>◇</span><span><strong>Important distinction.</strong> A generated magnetic field does not establish safety, clinical benefit or therapeutic effectiveness. No controlled treatment study was provided in the source report.</span></div></div>
+    </section>
+
+    <section class="section architecture" id="system">
+      <div class="section-label">02 / HARDWARE SYSTEM</div>
+      <div class="section-top"><h2>The anatomy<br>of a <em>pulse.</em></h2><p>An accessible block-level interpretation of the reported signal path. The diagram is conceptual, not a fabrication-ready circuit schematic.</p></div>
+      <div class="flow-frame"><img src="assets/system-flow.svg" alt="Functional block diagram: 5-volt source, NE555 astable oscillator, NPN stage, BD135 driver, copper coil and oscilloscope observation." loading="lazy"></div>
+      <div class="card-grid">
+        <article class="feature"><span class="feature-no">01 / TIMING</span><h3>NE555 oscillator</h3><p>Astable configuration produces repeated electrical pulses. Frequency and duty cycle depend on the actual resistor–capacitor network.</p></article>
+        <article class="feature"><span class="feature-no">02 / DRIVE</span><h3>Transistor stages</h3><p>A small-signal NPN stage and BD135 power transistor are described. The original report uses inconsistent labels for the first transistor.</p></article>
+        <article class="feature"><span class="feature-no">03 / FIELD</span><h3>Copper winding</h3><p>Reported coil dimensions are 60 turns and approximately 10 cm diameter; winding geometry and real coil current affect field strength.</p></article>
+      </div>
+    </section>
+
+    <section class="section evidence" id="evidence">
+      <div class="section-label">03 / DOCUMENTED OBSERVATIONS</div>
+      <div class="section-top"><h2>Evidence, with<br><em>boundaries.</em></h2><p>Values below are transcribed from the submitted report; they are not presented as fresh measurements or independently replicated results.</p></div>
+      <div class="evidence-grid">
+        <div class="evidence-main"><div class="report-label">REPORTED OSCILLOSCOPE FREQUENCY</div><div class="big-number">65.74<span>Hz</span></div><div class="under-number">Reported waveform observation · pages 14–15</div><svg class="static-trace" viewBox="0 0 720 120" role="img" aria-label="Illustrative pulsed trace, not the original measurement"><path d="M0 78H85V22H147V78H247V22H309V78H409V22H471V78H571V22H633V78H720" fill="none" stroke="#e5ad81" stroke-width="4"/><path d="M0 100H720" stroke="#718894" opacity=".4" stroke-dasharray="2 11"/></svg><small>Illustrative trace • original oscilloscope captures appear in the source report, not reproduced here</small></div>
+        <div class="evidence-side"><div><small>REPORTED OUTPUT VOLTAGE</small><strong>2.9 V</strong></div><div><small>REPORTED OUTPUT CURRENT</small><strong>12 mA</strong></div><div><small>REPORTED FIELD CALCULATION</small><strong>1.44 mT*</strong></div><p>*The 1.44 mT value is a report calculation, not an independently verified field measurement. The reported output current is not established to equal coil current.</p></div>
+      </div>
+      <p class="note">Source: <em>Design and Implementation of a Pulsed Electromagnetic Field (PEMF) Trainer Board for Therapeutic Application</em>, KUET course report, May 2025, pp. 9–15. Submitted author in the report: Sadia Islam. The title reflects the source document; this site does not claim an established therapeutic indication.</p>
+    </section>
+
+    <section class="section lab" id="lab">
+      <div class="section-label">04 / EXPLORE THE MODEL</div>
+      <div class="section-top"><h2>Observe. Adjust.<br><em>Understand.</em></h2><p>An interactive, idealized mathematical visualization for teaching. The controls do not communicate with hardware and the drawing is not recorded experimental data.</p></div>
+      <div class="lab-shell"><div class="lab-controls">
+        <label for="frequency">Pulse frequency <output id="frequencyValue" for="frequency">65.74 Hz</output></label><input id="frequency" type="range" min="1" max="150" value="65.74" step="0.01">
+        <label for="duty">Duty cycle <output id="dutyValue" for="duty">92%</output></label><input id="duty" type="range" min="10" max="95" value="92" step="1">
+        <label for="turns">Coil turns <output id="turnsValue" for="turns">60</output></label><input id="turns" type="range" min="10" max="120" value="60" step="1">
+        <label for="radius">Coil radius <output id="radiusValue" for="radius">50 mm</output></label><input id="radius" type="range" min="20" max="100" value="50" step="1">
+        <label for="current">Assumed coil current <output id="currentValue" for="current">12 mA</output></label><input id="current" type="range" min="1" max="500" value="12" step="1">
+        <button class="reset" id="reset" type="button">↺ Restore report-informed defaults</button>
+      </div>
+      <div class="lab-display"><div class="screen-header"><span><i></i> IDEALIZED SIGNAL / PREVIEW</span><span>MODEL ONLY · NOT LIVE</span></div><svg class="oscillo" viewBox="0 0 720 260" role="img" aria-labelledby="oscTitle oscDesc"><title id="oscTitle">Illustrative pulse train</title><desc id="oscDesc">Square wave responding to frequency and duty cycle sliders. Not an actual oscilloscope measurement.</desc><defs><pattern id="grid" width="45" height="32.5" patternUnits="userSpaceOnUse"><path d="M 45 0 L 0 0 0 32.5" fill="none" stroke="#9eb4b3" stroke-opacity=".19" stroke-width="1"/></pattern></defs><rect width="720" height="260" fill="url(#grid)"/><path id="wave" d="M0 196H90V60H145V196H270V60H325V196H450V60H505V196H630V60H685V196H720" fill="none" stroke="#f2bd8a" stroke-width="4" stroke-linejoin="round"/></svg>
+        <div class="model-readouts"><div><small>PERIOD</small><strong id="periodValue">15.21 ms</strong></div><div><small>HIGH TIME</small><strong id="highValue">13.99 ms</strong></div><div><small>IDEAL COIL CENTER FIELD</small><strong id="fieldValue" aria-live="polite">9.05 µT</strong></div></div><p class="model-caption">Approximation: B = μ₀NI/(2r), a circular coil in free space at its center. The model assumes the slider current flows through all turns; it does not account for magnetic cores, real current pulses, heating, field spatial distribution or tissue exposure.</p></div></div>
+    </section>
+
+    <section class="section next" id="limits"><div class="section-label">05 / ENGINEERING REFLECTION</div><div class="next-layout"><h2>What the board demonstrates.<br><em>What remains open.</em></h2><div><p><strong>Demonstrated in the source:</strong> assembly on a vero board, a separate copper coil, pulse generation and reported oscilloscope observations.</p><p><strong>Still requires verification:</strong> a measured coil-current waveform, calibrated field probe, repeatable test protocol, thermal/electrical safety analysis, clarified transistor part number and an independently reproduced field calculation.</p><p><strong>Not established:</strong> clinical effectiveness, appropriate treatment dosage or suitability for application to a person.</p><a class="text-link" href="docs/engineering-notes.md">Read engineering notes ↗</a></div></div></section>
+  </main>
+  <footer class="footer"><div><span class="footer-brand">PULSE<span>&</span>FIELD</span><p>Independent educational web visualization based on a May 2025 KUET course report credited to Sadia Islam. Repository presentation does not imply authorship of the original physical prototype.</p></div><div><a href="#top">Back to top ↑</a><a href="https://github.com/Sejuti-Dhali/PEMF-Trainer-Board" target="_blank" rel="noopener noreferrer">View GitHub repository ↗</a></div></footer>
+</body>
+</html>
