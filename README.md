@@ -57,3 +57,19 @@ This is an educational electronics website, **not** medical advice or a clinical
 
 - Project report, May 2025, chapters 2–5, pp. 9–15 (supplied source, not republished).
 - Texas Instruments, [NE555 precision timer datasheet](https://www.ti.com/lit/ds/symlink/ne555.pdf), for oscillator principles.
+
+
+## Original report figures
+
+The website presents eight original figures from the
+May 2025 PEMF trainer board coursework report:
+
+- Electronic circuit schematic and methodology flowchart
+- Vero board, copper coil and assembled prototype photographs
+- Three original oscilloscope waveform photographs
+
+The report identifies Sadia Islam as the submitting student.
+Original hardware authorship is not implied by repository ownership.
+
+These figures are documentary evidence of the source report,
+not new experimental measurements or clinical validation.
